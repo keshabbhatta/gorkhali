@@ -424,6 +424,6 @@ async def bounding_boxes(req: ImageRequest):
     return {"result": encode_image(result), "boxes": boxes, "count": len(boxes)}
 
 
-@app.get("/")
-def root():
-    return {"message": "Backend is running 🚀"}
+@app.get("/api/health")
+async def health():
+    return {"status": "ok", "opencv_version": cv2.__version__}
