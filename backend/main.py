@@ -43,7 +43,7 @@ def encode_image(img: np.ndarray, fmt: str = ".png") -> str:
 
 
 def histogram_to_base64(img: np.ndarray) -> str:
-    fig, axes = plt.subplots(1, 1, figsize=(5, 3), facecolor='#1a1a2e')
+    fig, axes = plt.subplots(1, 1, figsize=(5, 3), facecolor="#40405e")
     ax = axes
     ax.set_facecolor('#16213e')
     colors_map = {'B': '#3b82f6', 'G': '#22c55e', 'R': '#ef4444'}
@@ -424,6 +424,6 @@ async def bounding_boxes(req: ImageRequest):
     return {"result": encode_image(result), "boxes": boxes, "count": len(boxes)}
 
 
-@app.get("/api/health")
-async def health():
-    return {"status": "ok", "opencv_version": cv2.__version__}
+@app.get("/")
+def root():
+    return {"message": "Backend is running 🚀"}
